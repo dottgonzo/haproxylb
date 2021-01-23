@@ -2,12 +2,9 @@ import fs from 'fs'
 
 let data =
   'global \n\
-  log /dev/log local0 \n\
-  log /dev/log local1 notice \n\
-  stats timeout 30s \n\
-  user root \n\
-  group root \n\
-  daemon \n\
+  user haproxy \n\
+  group haproxy \n\
+  tune.ssl.default-dh-param 2048 \n\
 \n\
 defaults \n\
   log global \n\
@@ -29,7 +26,7 @@ for (const s of services) {
   data += 'frontend ' + s.port + '_front\n'
   data += '  bind *:' + s.port + '\n'
   data += '  mode ' + s.mode + '\n' + (s.mode === 'tcp' ? '  option tcp-check \n' : '')
-  data += '  default_backend ' + s.port + '_back\n\n'
+  data += '  use_backend ' + s.port + '_back\n\n'
 }
 for (const s of services) {
   data += 'backend ' + s.port + '_back\n'
