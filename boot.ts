@@ -36,7 +36,15 @@ for (const s of services) {
   if (s.mode === 'tcp') data += '  option tcp-check \n'
 
   for (const b of backends) {
-    data += '  server ' + b.replace(/\./g, '_') + ' ' + b + ':' + s.targetPort + ' check\n'
+    data +=
+      '  server ' +
+      b.replace(/\./g, '_') +
+      ' ' +
+      b +
+      ':' +
+      s.targetPort +
+      (s.mode !== 'tcp' && s.proxy_protocol ? ' send-proxy-v2' : '') +
+      ' check\n'
   }
   data += '\n'
 }
