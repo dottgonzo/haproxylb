@@ -15,8 +15,6 @@ let data = 'global \n\
 defaults \n\
   log global \n\
   mode http \n\
-  option httplog \n\
-  option dontlognull \n\
   timeout connect 5000 \n\
   timeout client 50000 \n\
   timeout server 50000 \n\n';
