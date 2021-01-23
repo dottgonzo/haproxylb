@@ -29,9 +29,9 @@ const services = process.env.SERVICES.split(',').map(m => {
 })
 for (const s of services) {
   data += 'frontend ' + s.port + '_front\n\
-    bind *:' + s.port + '\n\
-    mode ' + s.mode + '\n\
-    default_backend ' + s.port + '_back\n\n'
+  bind *:' + s.port + '\n\
+  mode ' + s.mode + '\n' + (s.mode==='tcp' ? '  option tcp-check \n':'') +'\
+  default_backend ' + s.port + '_back\n\n'
 }
 for (const s of services) {
   data += 'backend ' + s.port + '_back\n\
@@ -39,6 +39,7 @@ for (const s of services) {
   for (const b of backends) {
     data += '  server ' + b.replace(/\./g, '_') + ' ' + b + ':'+s.targetPort+' check\n'
   }
+  data+='\n'
 }
 
 
