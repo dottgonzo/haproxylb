@@ -2,7 +2,8 @@
 
 IMAGE_NAME="dottgonzo/haproxylb"
 VERSION="0.1.0"
+LATEST="latest"
 
 
 
-docker buildx build --platform linux/amd64,linux/arm64 -t ${IMAGE_NAME}:${VERSION} . --push
+docker buildx build --platform linux/amd64,linux/arm64 -t ${IMAGE_NAME}:${LATEST} -t ${IMAGE_NAME}:${VERSION} . --push
