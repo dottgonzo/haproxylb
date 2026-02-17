@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-CONFIG_PATH="${HAPROXY_CONFIG_PATH:-/usr/local/etc/haproxy/haproxy.cfg}"
+CONFIG_PATH="${HAPROXY_CONFIG_PATH:-/tmp/haproxy.cfg}"
 
 if [ -z "$BACKENDS" ]; then
   echo "ERROR: BACKENDS environment variable is required" >&2
