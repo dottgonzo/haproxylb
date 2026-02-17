@@ -1,5 +1,8 @@
-node_modules/
 .git/
-*.ts
-*.json
-.nvmrc
+.gitignore
+.dockerignore
+.vscode/
+README.md
+LICENSE
+docker-compose*.yml
+haproxy.example.cfg
