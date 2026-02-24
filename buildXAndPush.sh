@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IMAGE_NAME="dottgonzo/haproxylb"
-VERSION="0.1.0"
+VERSION="0.1.1"
 LATEST="latest"
 
 

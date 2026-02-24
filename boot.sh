@@ -17,17 +17,21 @@ fi
 backends_list=$(echo "$BACKENDS" | tr ',' '\n')
 services_list=$(echo "$SERVICES" | tr ',' '\n')
 
+TIMEOUT_CONNECT="${TIMEOUT_CONNECT:-10000}"
+TIMEOUT_CLIENT="${TIMEOUT_CLIENT:-900000}"
+TIMEOUT_SERVER="${TIMEOUT_SERVER:-900000}"
+
 # Write global and defaults sections
-cat > "$CONFIG_PATH" << 'EOF'
+cat > "$CONFIG_PATH" << EOF
 global
   tune.ssl.default-dh-param 2048
 
 defaults
   log global
   mode http
-  timeout connect 5000
-  timeout client 50000
-  timeout server 50000
+  timeout connect ${TIMEOUT_CONNECT}
+  timeout client ${TIMEOUT_CLIENT}
+  timeout server ${TIMEOUT_SERVER}
 
 EOF
 
